@@ -4,26 +4,18 @@ import Course from "./components/Course";
 import { data } from "./constants/data";
 import NavBar from "./components/NavBar";
 import Button from "./components/Button";
-import LanguageProvider from "./context/LanguageContext";
-import { ChangeEvent, useState } from "react";
+import LanguageProvider, { useLanguageContext } from "./context/LanguageContext";
+import { ChangeEvent } from "react";
 
 export default function App() {
   const title = "Education";
-  const [value, setValue] = useState("hr");
-
-  const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setValue(event.target.value);
-  };
 
   return (
     <LanguageProvider>
       <div className="container">
         <NavBar title="CROZ">
           <Button content="SERVICES" />
-          <select onChange={onChange} value={value}>
-            <option value="hr">HR</option>
-            <option value="en">EN</option>
-          </select>
+          <LanguagePicker />
         </NavBar>
         <div className="App">
           <Title title={title} />
@@ -36,5 +28,20 @@ export default function App() {
         </div>
       </div>
     </LanguageProvider>
+  );
+}
+
+function LanguagePicker() {
+  const { language, setLanguage } = useLanguageContext();
+
+  const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(event.target.value);
+  };
+
+  return (
+    <select onChange={onChange} value={language}>
+      <option value="en">EN</option>
+      <option value="hr">HR</option>
+    </select>
   );
 }
