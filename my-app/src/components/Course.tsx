@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { useLanguageContext } from "../context/LanguageContext";
 import "./Course.css";
 
@@ -10,11 +11,12 @@ interface CourseProps {
 
 export default function Course({ src, type, title, duration }: CourseProps) {
   const context = useLanguageContext();
+  const navigate = useNavigate();
 
   console.log(context);
 
   return (
-    <div className="Course">
+    <div className="Course" onClick={() => navigate("apply")}>
       <img src={src}></img>
       <span>{title}</span>
       <span className="Type">{type}</span>

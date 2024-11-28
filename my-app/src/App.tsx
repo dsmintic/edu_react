@@ -6,6 +6,7 @@ import Select from "./components/Select";
 import Courses from "./feature/courses/Courses";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 import { Navigate } from "react-router";
+import Apply from "./feature/course apply/Apply";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,16 @@ const router = createBrowserRouter([
       { index: true, element: <Navigate to="courses" /> },
       {
         path: "courses",
-        element: <Courses />,
+        children: [
+          {
+            index: true,
+            element: <Courses />,
+          },
+          {
+            path: "apply",
+            element: <Apply />,
+          },
+        ],
       },
     ],
   },
