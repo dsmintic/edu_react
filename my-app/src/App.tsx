@@ -5,7 +5,7 @@ import { data } from "./constants/data";
 import NavBar from "./components/NavBar";
 import Button from "./components/Button";
 import LanguageProvider, { useLanguageContext } from "./context/LanguageContext";
-import { ChangeEvent } from "react";
+import Select from "./components/Select";
 
 export default function App() {
   const title = "Education";
@@ -34,14 +34,14 @@ export default function App() {
 function LanguagePicker() {
   const { language, setLanguage } = useLanguageContext();
 
-  const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(event.target.value);
-  };
-
   return (
-    <select onChange={onChange} value={language}>
-      <option value="en">EN</option>
-      <option value="hr">HR</option>
-    </select>
+    <Select
+      value={language}
+      setValue={setLanguage}
+      options={[
+        { title: "HR", value: "hr" },
+        { title: "EN", value: "en" },
+      ]}
+    />
   );
 }
