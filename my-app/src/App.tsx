@@ -1,15 +1,26 @@
 import "./App.css";
-import Title from "./components/Title";
-import Course from "./components/Course";
-import { data } from "./constants/data";
 import NavBar from "./components/NavBar";
 import Button from "./components/Button";
 import LanguageProvider, { useLanguageContext } from "./context/LanguageContext";
 import Select from "./components/Select";
+import Courses from "./feature/courses/Courses";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { Navigate } from "react-router";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    children: [
+      { index: true, element: <Navigate to="courses" /> },
+      {
+        path: "courses",
+        element: <Courses />,
+      },
+    ],
+  },
+]);
 
 export default function App() {
-  const title = "Education";
-
   return (
     <LanguageProvider>
       <div className="container">
@@ -17,15 +28,7 @@ export default function App() {
           <Button content="SERVICES" />
           <LanguagePicker />
         </NavBar>
-        <div className="App">
-          <Title title={title} />
-          {/* <Course src="https://shorturl.at/PtoIU" title="React Interactive Education" type="Overview of React benefits" duration={3} /> */}
-          <div className="Courses">
-            {data.map((course) => (
-              <Course {...course} key={course.id} />
-            ))}
-          </div>
-        </div>
+        <RouterProvider router={router} />
       </div>
     </LanguageProvider>
   );
