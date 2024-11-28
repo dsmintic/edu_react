@@ -5,14 +5,25 @@ import { data } from "./constants/data";
 import NavBar from "./components/NavBar";
 import Button from "./components/Button";
 import LanguageProvider from "./context/LanguageContext";
+import { ChangeEvent, useState } from "react";
 
 export default function App() {
   const title = "Education";
+  const [value, setValue] = useState("hr");
+
+  const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setValue(event.target.value);
+  };
+
   return (
     <LanguageProvider>
       <div className="container">
         <NavBar title="CROZ">
           <Button content="SERVICES" />
+          <select onChange={onChange} value={value}>
+            <option value="hr">HR</option>
+            <option value="en">EN</option>
+          </select>
         </NavBar>
         <div className="App">
           <Title title={title} />
