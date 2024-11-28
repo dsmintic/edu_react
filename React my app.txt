@@ -1,0 +1,16 @@
+C:\Users\polaznik\Desktop\damir>npm create vite@latest my-app -- --template react-ts
+
+Scaffolding project in C:\Users\polaznik\Desktop\damir\my-app...
+
+Done. Now run:
+
+  cd my-app
+  npm install
+  npm run dev
+
+
+VITE v6.0.1  ready in 243 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help

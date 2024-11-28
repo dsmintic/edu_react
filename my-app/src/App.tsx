@@ -1,16 +1,17 @@
 import "./App.css";
 import Title from "./components/Title";
-import Counter from "./components/Counter";
-import Button from "./components/Button";
+import Course from "./components/Course";
+import { data } from "./constants/data";
 
 export default function App() {
   const title = "Education";
   return (
     <div className="contanier">
       <Title title={title} />
-      <span>Continuous education is one of the crucial factors for success.</span>
-      <Counter />
-      <Button content="Crveni tekst"/>
+      <Course src="https://shorturl.at/PtoIU" title="React Interactive Education" type="Overview of React benefits" duration={3} />
+      {data.map((course) => (
+        <Course {...course} key={course.id} />
+      ))}
     </div>
   );
 }

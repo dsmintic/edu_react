@@ -1,0 +1,29 @@
+.Course {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+}
+
+.Duration {
+    font-weight: lighter;
+    text-align: start;
+    padding: 0.25rem;
+  }
+  
+  
+  .Type {
+    border-radius: 1rem;
+    background-color: #e0e0e0;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
