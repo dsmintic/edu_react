@@ -30,8 +30,6 @@ export default function Apply() {
       formErrors.firstName = "Fali first name";
     }
 
-    console.log(formErrors)
-
     if (Object.keys(formErrors).length > 0) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
