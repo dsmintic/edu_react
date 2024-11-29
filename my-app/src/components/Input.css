@@ -1,0 +1,6 @@
+.Field {
+    color:blue;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }  
