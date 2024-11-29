@@ -8,9 +8,9 @@ export default function Apply() {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.currentTarget);
 
-    const data = {};
+    const data: Record<string, unknown> = {};
     formData.forEach((value, name) => {
       data[name] = value;
     });
