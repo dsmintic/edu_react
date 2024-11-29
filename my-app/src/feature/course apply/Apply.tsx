@@ -3,8 +3,12 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import TextArea from "../../components/TextArea";
 import Title from "../../components/Title";
+import { applyAttendants } from "../../api/attendants";
+import { useNavigate, useParams } from "react-router";
 
 export default function Apply() {
+  const params = useParams();
+  const navigate = useNavigate();
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -14,8 +18,12 @@ export default function Apply() {
     formData.forEach((value, name) => {
       data[name] = value;
     });
-
-    console.log(data);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    applyAttendants({
+      ...data,
+      courseId: params.id!,
+    }).then(() => navigate("/courses"));
   };
   return (
     <div>
@@ -25,7 +33,7 @@ export default function Apply() {
         <Input name="lastName" label="Prezime" />
         <Input name="email" label="E-mail" />
         <Input name="company" label="Kompanija" />
-        <TextArea name="Message" label="Poruka" />
+        <TextArea name="message" label="Poruka" />
         <Button content="Submit" />
       </form>
     </div>

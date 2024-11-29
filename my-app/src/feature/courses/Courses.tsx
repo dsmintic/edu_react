@@ -7,14 +7,19 @@ import { Course as CourseResponse } from "../../model/courses";
 
 export default function Courses() {
   const [courses, setCourses] = useState<CourseResponse[]>([]);
+  const [loading, setLoading] = useState(true);
   const title = "Education";
 
   useEffect(() => {
-    getCourses().then((courses) => setCourses(courses));
-    document.title = "Effect radi";
+    getCourses().then((courses) => {
+      setCourses(courses);
+      setLoading(false);
+    });
   }, []);
 
-  console.log(courses)
+  if (loading) {
+    return "Loading course data...";
+  }
 
   return (
     <div className="App">
