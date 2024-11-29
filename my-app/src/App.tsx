@@ -8,11 +8,13 @@ import { createBrowserRouter, Link, Outlet, RouterProvider } from "react-router"
 import { Navigate } from "react-router";
 import Apply from "./feature/course apply/Apply";
 import Attendants from "./feature/attendants/Attendants";
+import { ErrorBoundary } from "react-error-boundary";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AppContanier />,
+    errorElement: <span>Greška u ruti</span>,
     children: [
       { index: true, element: <Navigate to="courses" /> },
       {
@@ -30,6 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "attendants",
+        errorElement: <span>Greška u polaznicima</span>,
         element: <Attendants />,
       },
     ],
@@ -38,9 +41,11 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <RouterProvider router={router} />
-    </LanguageProvider>
+    <ErrorBoundary fallback={<span>Greška u rederiranju</span>}>
+      <LanguageProvider>
+        <RouterProvider router={router} />
+      </LanguageProvider>
+    </ErrorBoundary>
   );
 }
 

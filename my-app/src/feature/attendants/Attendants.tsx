@@ -2,17 +2,21 @@ import { useEffect, useState } from "react";
 import { AttendantsResponse } from "../../model/attendants";
 import { getAttendants } from "../../api/attendants";
 import "./Attendants.css";
+import { useErrorBoundary } from "react-error-boundary";
 
 export default function Attendants() {
   const [attendants, setAttendants] = useState<AttendantsResponse[]>([]);
   const [loading, setLoading] = useState(true);
+  const { showBoundary } = useErrorBoundary();
 
   useEffect(() => {
-    getAttendants().then((attendants) => {
-      setAttendants(attendants);
-      setLoading(false);
-    });
-  }, []);
+    getAttendants()
+      .then((attendants) => {
+        setAttendants(attendants);
+        setLoading(false);
+      })
+      .catch((e) => showBoundary(e));
+  }, [showBoundary]);
 
   if (loading) {
     return "Loading course data...";
