@@ -4,9 +4,10 @@ import Button from "./components/Button";
 import LanguageProvider, { useLanguageContext } from "./context/LanguageContext";
 import Select from "./components/Select";
 import Courses from "./feature/courses/Courses";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
+import { createBrowserRouter, Link, Outlet, RouterProvider } from "react-router";
 import { Navigate } from "react-router";
 import Apply from "./feature/course apply/Apply";
+import Attendants from "./feature/attendants/Attendants";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             element: <Apply />,
           },
         ],
+      },
+      {
+        path: "attendants",
+        element: <Attendants />,
       },
     ],
   },
@@ -58,6 +63,8 @@ function AppContanier() {
   return (
     <div className="container">
       <NavBar title="CROZ">
+        <Link to="/courses">Courses</Link>
+        <Link to="/attendants">Attendants</Link>
         <Button content="SERVICES" />
         <LanguagePicker />
       </NavBar>

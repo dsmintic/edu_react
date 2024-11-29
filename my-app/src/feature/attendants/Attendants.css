@@ -1,0 +1,53 @@
+/* Osnovni stil za div koji sadrži tablicu */
+.Att {
+    width: 100%;
+    margin: 20px auto;
+    padding: 0 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Pozadina za ceo div */
+  }
+  
+  /* Stilizacija tablice */
+  table {
+    width: 100%;
+    border-collapse: collapse; /* Ukoliko želite da obrubi ćelija budu povezani */
+    margin-top: 20px;
+  }
+  
+  /* Stil za zaglavlja tabele (th) */
+  th {
+    background-color: #4CAF50; /* Zeleni pozadinski boja za zaglavlja */
+    color: white; /* Bela boja teksta */
+    padding: 12px 15px; /* Razmaci unutar ćelije */
+    text-align: left; /* Poravnanje teksta levo */
+    font-weight: bold;
+  }
+  
+  /* Stil za ćelije tabele (td) */
+  td {
+    padding: 10px 15px; /* Razmaci unutar ćelije */
+    border: 1px solid #ddd; /* Sivi obrub oko ćelija */
+    text-align: left; /* Poravnanje teksta levo */
+  }
+  
+  /* Efekat pri prelasku miša preko reda tabele */
+  tr:hover {
+    background-color: #f1f1f1; /* Svetla siva pozadina kada je red selektovan */
+  }
+  
+  /* Alternativni redovi sa različitim bojama pozadine */
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Svetlo siva boja pozadine za parne redove */
+  }
+  
+  /* Stil za mobilne uređaje - manje margine i razmaci */
+  @media screen and (max-width: 768px) {
+    table {
+      font-size: 14px;
+    }
+  
+    th, td {
+      padding: 8px 10px; /* Manji razmaci za manje ekrane */
+    }
+  }
+  
